@@ -1,0 +1,14 @@
+syntax = "proto3";
+option java_package = "org.example.ServiceBookconfirmation";
+
+message ConfirmationRequest{
+  string CarPlate = 1;
+}
+
+message Confirmation{
+  string reservation = 1;
+}
+
+service ServiceBookconfirmation{
+  rpc getConfirmantion(ConfirmationRequest) returns (Confirmation);
+}
