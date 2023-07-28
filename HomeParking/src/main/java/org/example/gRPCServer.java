@@ -7,6 +7,9 @@ import org.example.ServiceBookconfirmation.ServiceBookconfirmationGrpc;
 import org.example.ServiceBookconfirmation.ServiceBookconfirmationOuterClass;
 
 import java.net.InetAddress;
+import io.grpc.stub.StreamObserver;
+import java.util.Map;
+import java.util.HashMap;
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
 import java.io.FileInputStream;
@@ -53,7 +56,7 @@ public class gRPCServer {
         System.out.println("\t service_type:" +prop.getProperty("service_type"));
         System.out.println("\t service_name:" +prop.getProperty("service_name"));
         System.out.println("\t service_description:"+prop.getProperty("service_description"));
-        System.out.println("\t servece_port:"+prop.getProperty("service_port"));
+        System.out.println("\t service_port:"+prop.getProperty("service_port"));
 
       }
 
@@ -66,21 +69,22 @@ public class gRPCServer {
 
    private void registerService(Properties prop) {
        try {
-             JmDNS jmdns = JmDNS.create(InetAddresses.getLocalHost());
+           InetAddress localHost = InetAddress.getLocalHost();
+           JmDNS jmdns = JmDNS.create(localHost);
 
-           String service_type = prop.getProperty("servive_type");
+           String service_type = prop.getProperty("service_type");
            String service_name = prop.getProperty("service_name");
 
            int service_port = Integer.valueOf(prop.getProperty("service_port"));
 
-           String service_decription_properties = prop.getProperty("service_description");
+           String service_description_properties = prop.getProperty("service_description");
 
-           ServiceInfo serviceInfo = ServiceInfo.create(service_type, service_name, service_port, service_decription_properties);
+           ServiceInfo serviceInfo = ServiceInfo.create(service_type, service_name, service_port, service_description_properties);
            jmdns.registerService(serviceInfo);
 
            System.out.printf("registering service with type %s and name %s \n", service_type, service_name);
 
-           Thread.sleep(100);
+           Thread.sleep(1000);
        } catch (IOException e) {
            System.out.println(e.getMessage());
        } catch (InterruptedException e) {
@@ -89,6 +93,7 @@ public class gRPCServer {
 
    }
    public static class Service1 extends ServiceBookconfirmationGrpc.ServiceBookconfirmationImplBase{
+
 
    }
 
