@@ -1,5 +1,7 @@
 package org.example.ServiceBookconfirmation;
 
+import io.grpc.stub.StreamObserver;
+
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
 import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
@@ -104,6 +106,8 @@ public final class ServiceBookconfirmationGrpc {
                   this, METHODID_GET_CONFIRMANTION)))
           .build();
     }
+
+    public abstract void getConfirmation(ServiceBookconfirmationOuterClass.ConfirmationRequest request, StreamObserver<ServiceBookconfirmationOuterClass.Confirmation> responseObserver);
   }
 
   /**
