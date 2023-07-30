@@ -1,20 +1,14 @@
 package org.example.ServiceBookconfirmation;
 
 import io.grpc.stub.StreamObserver;
+import org.example.client.BookingClient;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
-import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
-import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
-import static io.grpc.stub.ClientCalls.asyncServerStreamingCall;
 import static io.grpc.stub.ClientCalls.asyncUnaryCall;
 import static io.grpc.stub.ClientCalls.blockingServerStreamingCall;
 import static io.grpc.stub.ClientCalls.blockingUnaryCall;
 import static io.grpc.stub.ClientCalls.futureUnaryCall;
-import static io.grpc.stub.ServerCalls.asyncBidiStreamingCall;
-import static io.grpc.stub.ServerCalls.asyncClientStreamingCall;
-import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnaryCall;
-import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 
 /**
@@ -80,7 +74,7 @@ public final class ServiceBookconfirmationGrpc {
    * Creates a new ListenableFuture-style stub that supports unary calls on the service
    */
   public static ServiceBookconfirmationFutureStub newFutureStub(
-      io.grpc.Channel channel) {
+          org.example.client.BookingClient channel) {
     return new ServiceBookconfirmationFutureStub(channel);
   }
 
@@ -166,7 +160,7 @@ public final class ServiceBookconfirmationGrpc {
   /**
    */
   public static final class ServiceBookconfirmationFutureStub extends io.grpc.stub.AbstractStub<ServiceBookconfirmationFutureStub> {
-    private ServiceBookconfirmationFutureStub(io.grpc.Channel channel) {
+    private ServiceBookconfirmationFutureStub(BookingClient channel) {
       super(channel);
     }
 

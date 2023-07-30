@@ -109,11 +109,11 @@ public class gRPCServer {
 
         public static class ServerGRPC {
 
-            public static void main(String[] args) throws Exception {
-                ServerGRPC server = new ServerGRPC();
-                server.start();
-                server.blockUntilShutdown();
-            }
+         //   public static void main(String[] args) throws Exception {
+            //    ServerGRPC server = new ServerGRPC();
+            //    server.start();
+            //    server.blockUntilShutdown();
+           // }
 
             private Server server;
 
