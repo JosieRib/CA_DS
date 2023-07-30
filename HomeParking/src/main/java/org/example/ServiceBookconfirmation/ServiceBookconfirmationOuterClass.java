@@ -3,7 +3,13 @@
 
 package org.example.ServiceBookconfirmation;
 
+import com.google.protobuf.*;
+
+import java.io.IOException;
+
 public final class ServiceBookconfirmationOuterClass {
+  public static ServiceBookconfirmationOuterClass.ConfirmationRequest.Builder ConfirmationRequest;
+
   private ServiceBookconfirmationOuterClass() {}
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistryLite registry) {
@@ -299,20 +305,22 @@ public final class ServiceBookconfirmationOuterClass {
      * Protobuf type {@code ConfirmationRequest}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:ConfirmationRequest)
-        org.example.ServiceBookconfirmation.ServiceBookconfirmationOuterClass.ConfirmationRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+        ConfirmationRequestOrBuilder {
+      private ServiceBookconfirmationOuterClass.ConfirmationRequest defaultInstance;
+
+      public static final Descriptors.Descriptor
           getDescriptor() {
-        return org.example.ServiceBookconfirmation.ServiceBookconfirmationOuterClass.internal_static_ConfirmationRequest_descriptor;
+        return ServiceBookconfirmationOuterClass.internal_static_ConfirmationRequest_descriptor;
       }
 
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      @Override
+      protected FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.example.ServiceBookconfirmation.ServiceBookconfirmationOuterClass.internal_static_ConfirmationRequest_fieldAccessorTable
+        return ServiceBookconfirmationOuterClass.internal_static_ConfirmationRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.example.ServiceBookconfirmation.ServiceBookconfirmationOuterClass.ConfirmationRequest.class, org.example.ServiceBookconfirmation.ServiceBookconfirmationOuterClass.ConfirmationRequest.Builder.class);
+                ServiceBookconfirmationOuterClass.ConfirmationRequest.class, Builder.class);
       }
 
       // Construct using org.example.ServiceBookconfirmation.ServiceBookconfirmationOuterClass.ConfirmationRequest.newBuilder()
@@ -321,16 +329,16 @@ public final class ServiceBookconfirmationOuterClass {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
         }
       }
-      @java.lang.Override
+      @Override
       public Builder clear() {
         super.clear();
         carPlate_ = "";
@@ -338,78 +346,78 @@ public final class ServiceBookconfirmationOuterClass {
         return this;
       }
 
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
+      @Override
+      public Descriptors.Descriptor
           getDescriptorForType() {
-        return org.example.ServiceBookconfirmation.ServiceBookconfirmationOuterClass.internal_static_ConfirmationRequest_descriptor;
+        return ServiceBookconfirmationOuterClass.internal_static_ConfirmationRequest_descriptor;
       }
 
-      @java.lang.Override
-      public org.example.ServiceBookconfirmation.ServiceBookconfirmationOuterClass.ConfirmationRequest getDefaultInstanceForType() {
-        return org.example.ServiceBookconfirmation.ServiceBookconfirmationOuterClass.ConfirmationRequest.getDefaultInstance();
+      @Override
+      public ServiceBookconfirmationOuterClass.ConfirmationRequest getDefaultInstanceForType() {
+        return ServiceBookconfirmationOuterClass.ConfirmationRequest.getDefaultInstance();
       }
 
-      @java.lang.Override
-      public org.example.ServiceBookconfirmation.ServiceBookconfirmationOuterClass.ConfirmationRequest build() {
-        org.example.ServiceBookconfirmation.ServiceBookconfirmationOuterClass.ConfirmationRequest result = buildPartial();
+      @Override
+      public ServiceBookconfirmationOuterClass.ConfirmationRequest build() {
+        ServiceBookconfirmationOuterClass.ConfirmationRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      @java.lang.Override
-      public org.example.ServiceBookconfirmation.ServiceBookconfirmationOuterClass.ConfirmationRequest buildPartial() {
-        org.example.ServiceBookconfirmation.ServiceBookconfirmationOuterClass.ConfirmationRequest result = new org.example.ServiceBookconfirmation.ServiceBookconfirmationOuterClass.ConfirmationRequest(this);
+      @Override
+      public ServiceBookconfirmationOuterClass.ConfirmationRequest buildPartial() {
+        ServiceBookconfirmationOuterClass.ConfirmationRequest result = new ConfirmationRequest(this);
         result.carPlate_ = carPlate_;
         onBuilt();
         return result;
       }
 
-      @java.lang.Override
+      @Override
       public Builder clone() {
         return (Builder) super.clone();
       }
-      @java.lang.Override
+      @Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          Descriptors.FieldDescriptor field,
+          Object value) {
         return (Builder) super.setField(field, value);
       }
-      @java.lang.Override
+      @Override
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+          Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
-      @java.lang.Override
+      @Override
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
-      @java.lang.Override
+      @Override
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          Descriptors.FieldDescriptor field,
+          int index, Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
-      @java.lang.Override
+      @Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          Descriptors.FieldDescriptor field,
+          Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.example.ServiceBookconfirmation.ServiceBookconfirmationOuterClass.ConfirmationRequest) {
-          return mergeFrom((org.example.ServiceBookconfirmation.ServiceBookconfirmationOuterClass.ConfirmationRequest)other);
+      @Override
+      public Builder mergeFrom(Message other) {
+        if (other instanceof ServiceBookconfirmationOuterClass.ConfirmationRequest) {
+          return mergeFrom((ServiceBookconfirmationOuterClass.ConfirmationRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.example.ServiceBookconfirmation.ServiceBookconfirmationOuterClass.ConfirmationRequest other) {
-        if (other == org.example.ServiceBookconfirmation.ServiceBookconfirmationOuterClass.ConfirmationRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(ServiceBookconfirmationOuterClass.ConfirmationRequest other) {
+        if (other == ServiceBookconfirmationOuterClass.ConfirmationRequest.getDefaultInstance()) return this;
         if (!other.getCarPlate().isEmpty()) {
           carPlate_ = other.carPlate_;
           onChanged();
@@ -419,21 +427,21 @@ public final class ServiceBookconfirmationOuterClass {
         return this;
       }
 
-      @java.lang.Override
+      @Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @java.lang.Override
+      @Override
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        org.example.ServiceBookconfirmation.ServiceBookconfirmationOuterClass.ConfirmationRequest parsedMessage = null;
+          CodedInputStream input,
+          ExtensionRegistryLite extensionRegistry)
+          throws IOException {
+        ServiceBookconfirmationOuterClass.ConfirmationRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.example.ServiceBookconfirmation.ServiceBookconfirmationOuterClass.ConfirmationRequest) e.getUnfinishedMessage();
+        } catch (InvalidProtocolBufferException e) {
+          parsedMessage = (ServiceBookconfirmationOuterClass.ConfirmationRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -443,43 +451,43 @@ public final class ServiceBookconfirmationOuterClass {
         return this;
       }
 
-      private java.lang.Object carPlate_ = "";
+      private Object carPlate_ = "";
       /**
        * <code>string CarPlate = 1;</code>
        */
-      public java.lang.String getCarPlate() {
-        java.lang.Object ref = carPlate_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
+      public String getCarPlate() {
+        Object ref = carPlate_;
+        if (!(ref instanceof String)) {
+          ByteString bs =
+              (ByteString) ref;
+          String s = bs.toStringUtf8();
           carPlate_ = s;
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
       /**
        * <code>string CarPlate = 1;</code>
        */
-      public com.google.protobuf.ByteString
+      public ByteString
           getCarPlateBytes() {
-        java.lang.Object ref = carPlate_;
+        Object ref = carPlate_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          ByteString b =
+              ByteString.copyFromUtf8(
+                  (String) ref);
           carPlate_ = b;
           return b;
         } else {
-          return (com.google.protobuf.ByteString) ref;
+          return (ByteString) ref;
         }
       }
       /**
        * <code>string CarPlate = 1;</code>
        */
       public Builder setCarPlate(
-          java.lang.String value) {
+          String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -501,7 +509,7 @@ public final class ServiceBookconfirmationOuterClass {
        * <code>string CarPlate = 1;</code>
        */
       public Builder setCarPlateBytes(
-          com.google.protobuf.ByteString value) {
+          ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -511,16 +519,28 @@ public final class ServiceBookconfirmationOuterClass {
         onChanged();
         return this;
       }
-      @java.lang.Override
+      @Override
       public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
       }
 
-      @java.lang.Override
+      @Override
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+          final UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
+      }
+
+      public Builder newBuilder() {
+        return null;
+      }
+
+      public ServiceBookconfirmationOuterClass.ConfirmationRequest getDefaultInstance() {
+        return defaultInstance;
+      }
+
+      public void setDefaultInstance(ServiceBookconfirmationOuterClass.ConfirmationRequest defaultInstance) {
+        this.defaultInstance = defaultInstance;
       }
 
 

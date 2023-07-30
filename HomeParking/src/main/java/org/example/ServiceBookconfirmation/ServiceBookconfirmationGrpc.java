@@ -182,6 +182,10 @@ public final class ServiceBookconfirmationGrpc {
       return futureUnaryCall(
           getChannel().newCall(getGetConfirmantionMethod(), getCallOptions()), request);
     }
+
+    public ServiceBookconfirmationOuterClass.Confirmation getConfirmation(ServiceBookconfirmationOuterClass.ConfirmationRequest request) {
+      return null;
+    }
   }
 
   private static final int METHODID_GET_CONFIRMANTION = 0;
