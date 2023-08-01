@@ -1,5 +1,5 @@
 syntax = "proto3";
-option java_package = "org.example.ServiceBookconfirmation";
+option java_package = "ds.home.unary";
 
 message ConfirmationRequest{
   string CarPlate = 1;
@@ -9,6 +9,8 @@ message Confirmation{
   string reservation = 1;
 }
 
-service ServiceBookconfirmation{
+service BookConfirmation{
   rpc getConfirmantion(ConfirmationRequest) returns (Confirmation);
 }
+
+
