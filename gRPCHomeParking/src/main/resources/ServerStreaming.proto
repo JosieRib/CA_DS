@@ -1,0 +1,25 @@
+syntax = "proto3";
+option java_package = "ds.home.serverStreaming";
+
+message AddressRequest{
+  City city = 1;
+
+  enum City{
+  Dublin = 0;
+  Cork = 1;
+  Galway = 2;
+  }
+}
+
+message Address{
+  string address = 1;
+  string garageNumber = 2;
+}
+
+service AddressAvailability{
+ rpc getAddress(AddressRequest) returns (stream Address);
+
+}
+
+
+

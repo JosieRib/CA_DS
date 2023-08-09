@@ -57,6 +57,11 @@
             <artifactId>jmdns</artifactId>
             <version>3.5.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.graalvm.compiler</groupId>
+            <artifactId>compiler</artifactId>
+            <version>22.0.0</version>
+        </dependency>
     </dependencies>
 
     <properties>

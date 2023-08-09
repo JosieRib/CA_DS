@@ -1,10 +1,13 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Properties;
 
+import ds.home.serverStreaming.AddressAvailabilityGrpc;
+import ds.home.serverStreaming.ServerStreaming;
 import ds.home.unary.BookConfirmationGrpc;
 import ds.home.unary.Unary;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
-
 import io.grpc.stub.StreamObserver;
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
@@ -15,6 +18,14 @@ import java.net.InetAddress;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import ds.home.serverStreaming.AddressAvailabilityGrpc;
+
+//import ds.home.serverStreaming.AddressRequest;
+import io.grpc.stub.StreamObserver;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class gRPCServer {
     public static void main(String[] args) {
         gRPCServer gRPCServer = new gRPCServer();
@@ -28,6 +39,7 @@ public class gRPCServer {
         try {
             Server server = ServerBuilder.forPort(port)
                     .addService(new Unary())
+                    .addService(new ServerStreaming())
                     .build()
                     .start();
             System.out.println("Server started, listening on "+port);
@@ -104,21 +116,79 @@ public class gRPCServer {
         }
         private String checkConfirmation(String carPlate) {
             if (confirmedPlates.contains(carPlate)) {
-                return "Booking confirmado.";
+                return "Your booking is confirmed.";
             } else {
-                return "Booking não confirmado.";
+                return "No booking was found for the given plate.";
             }
         }
         private List<String> confirmedPlates;
 
         public Unary() {
             confirmedPlates = new ArrayList<>();
-            confirmedPlates.add("ABC123");
+            confirmedPlates.add("NCI123");
             confirmedPlates.add("XYZ789");
             confirmedPlates.add("DEF456");
             confirmedPlates.add("GHI987");
             confirmedPlates.add("JKL321");
         }
     }
-    
+
+    public static class ServerStreaming extends AddressAvailabilityGrpc.AddressAvailabilityImplBase{
+
+        @Override
+        public void getAddress(ds.home.serverStreaming.ServerStreaming.AddressRequest request, StreamObserver<ds.home.serverStreaming.ServerStreaming.Address> responseObserver) {
+            ds.home.serverStreaming.ServerStreaming.AddressRequest.City city = request.getCity();
+
+            Map<String,String> addressMap = getAddressfromMap(city);
+
+            try {
+                for (Map.Entry<String,String> entry: addressMap.entrySet()){
+                    String addressKey = entry.getKey();
+                    String addressValue = entry.getValue();
+
+                    ds.home.serverStreaming.ServerStreaming.Address response = ds.home.serverStreaming.ServerStreaming.Address.newBuilder()
+                            .setAddress(addressKey)
+                            .setGarageNumber(addressValue)
+                            .build();
+
+                    try {
+                        Thread.sleep(1000);
+                    }
+                    catch (InterruptedException e){
+                        e.printStackTrace();
+                    }
+                    responseObserver.onNext(response);
+
+                }
+            }
+            finally {
+                responseObserver.onCompleted();
+            }
+        }
+
+        private Map<String,String> getAddressfromMap(ds.home.serverStreaming.ServerStreaming.AddressRequest.City city){
+            Map<String,String> addressMap = new HashMap<>();
+
+            if (city == ds.home.serverStreaming.ServerStreaming.AddressRequest.City.Dublin){
+                addressMap.put("30, Cabriff street, Dublin 2, D02FHJD, Price: 25.50", "Garage number: 102");
+                addressMap.put("81 South Circular road, Dublin 8, D08DFHJ, Price: 10.20", "Garage number: 181");
+                addressMap.put("02, Candem St, Dublin 2, D02PGV, Price: 15.50", "Garage number: 10");
+                addressMap.put("30, ABC street, Dublin 2, D02FHJD, Price: 25.52", "Garage number: 10");
+
+            } else if (city== ds.home.serverStreaming.ServerStreaming.AddressRequest.City.Cork) {
+                addressMap.put("40,Weir st, Cork , C2FHJD, Price: 25.52", "Garage number: 10");
+                addressMap.put("23, Wouter st, Cork, C23VFH, Price: 25.52", "Garage number: 10");
+                addressMap.put("28, St James rd,Cork, CF23BN, Price: 25.52", "Garage number: 10");
+                addressMap.put("36, Clark st, Cork, C2FFHJD, Price: 25.52", "Garage number: 10");
+            }
+
+            else {
+                addressMap.put("default","default");
+            }
+            return addressMap;
+        }
+    }
+
+
+
 }
