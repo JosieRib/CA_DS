@@ -79,7 +79,7 @@ public class Gui_client extends JFrame {
         desktopPane.add(btnNewButton);
 
         textField = new JTextField();
-        textField.setBackground(new Color(192, 192, 192));
+        textField.setBackground(Color.WHITE);
         textField.setBounds(39, 119, 343, 20);
         desktopPane.add(textField);
         textField.setColumns(10);
